@@ -1,0 +1,182 @@
+{% extends 'fragments/base.html' %}
+
+{% load static %}
+{% load blog_tags %}
+{% block content %}
+
+
+
+
+
+ {% include 'fragments/nav.html' %}
+  
+ 
+ 
+ 
+ <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Portolio</h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>Portolio</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container" data-aos="fade-up">
+
+
+        <div class="section-title">
+          <h2>Our products</strong></h2>
+          <p>Laborum repudiandae omnis voluptatum consequatur mollitia ea est voluptas ut</p>
+        </div>
+
+
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">App</li>
+              <li data-filter=".filter-card">Card</li>
+              <li data-filter=".filter-web">Web</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up">
+          {% for app in app %}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <img src="{{app.img.url}}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{app.title}}</h4>
+              <p>{{app.Desc|markdown|truncatechars_html:50|safe }}</p>
+              {% if app.active %}
+              <p class="alert-info"><a href="#">Read more</a></p>
+              {% endif %}
+
+              &nbsp;
+
+              <a href="{% static 'assets/img/portfolio/portfolio-1.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+              <a href="/portfolio-details" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+          {% endfor %}
+
+
+          {% for wep in wep %}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <img src="{{wep.img.url}}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{wep.title}}</h4>
+
+              <p>{{wep.Desc|markdown|truncatechars_html:50|safe }}</p>
+              {% if wep.active %}
+              <p class="alert-info"><a href="#">Read more</a></p>
+              {% endif %}
+ &nbsp;
+              <a href="{% static 'assets/img/portfolio/portfolio-2.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+              <a href="/portfolio-details" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+          {% endfor %}
+
+          
+
+          {% for card in card %}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <img src="{{card.img.url}}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{card.title}}</h4>
+
+              <p>{{card.Desc|markdown|truncatechars_html:50|safe }}</p>
+              {% if card.active %}
+              <p class="alert-info"><a href="#">Read more</a></p>
+              {% endif %}
+              &nbsp;
+              <a href="{% static 'assets/img/portfolio/portfolio-4.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
+              <a href="/portfolio-details" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+          {% endfor %}
+
+          {% for web2 in web2%}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <img src="{% static 'assets/img/portfolio/portfolio-5.jpg' %}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Web 2</h4>
+              <p>Web</p>
+              <a href="{% static 'assets/img/portfolio/portfolio-5.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
+              <a href="/portfolio-details" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+          {% endfor %}
+
+          {% for app3 in app3 %}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <img src="{% static 'assets/img/portfolio/portfolio-6.jpg' %}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>App 3</h4>
+              <p>App</p>
+              <a href="{% static 'assets/img/portfolio/portfolio-6.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
+              <a href="/portfolio-details" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+            {% endfor %}
+
+            {% for card5 in card5%}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <img src="{% static 'assets/img/portfolio/portfolio-7.jpg' %}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Card 1</h4>
+              <p>Card</p>
+              <a href="{% static 'assets/img/portfolio/portfolio-7.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
+              <a href="/portfolio-details" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+          {% endfor %}
+
+          {% for card3 in card3 %}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <img src="{% static 'assets/img/portfolio/portfolio-8.jpg' %}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Card 3</h4>
+              <p>Card</p>
+              <a href="{% static 'assets/img/portfolio/portfolio-8.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
+              <a href="/portfolio-details" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+          {% endfor %}
+
+          {% for web4 in web4 %}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <img src="{% static 'assets/img/portfolio/portfolio-9.jpg' %}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Web 3</h4>
+              <p>Web</p>
+              <a href="{% static 'assets/img/portfolio/portfolio-9.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+              <a href="/portfolio-details" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <!-- End Footer -->
+ 
+  {% include 'fragments/footer.html' %}
+
+  {% endblock %}

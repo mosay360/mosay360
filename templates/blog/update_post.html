@@ -1,0 +1,152 @@
+{% extends 'fragments/base.html' %}
+{% load blog_tags %}
+{% block content %}
+ {% include 'fragments/nav.html' %}
+ 
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Edit Blog Post  </h2>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li> <a href="{% url 'blog:blogIndex' %}">Blog</a></li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container-fluid">
+
+        <div class="row">
+
+          <div class="col-lg-8 entries">
+                
+            
+
+            <article class="entry" data-aos="fade-up">
+
+              <div class="entry-img">
+                <img src="assets/img/blog-2.jpg" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="entry-title">
+                <a href="blog-single.html">Edit Blog Post </a>
+              </h2>
+
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                  <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.html">12 Comments</a></li>
+                </ul>
+              </div>
+
+              <div class="entry-content">
+                {%if user.is_authenticated %}
+              <div class= "form-group">
+                   <form method="POST" >
+                       {% csrf_token %}
+                       {{ form.media }}
+                        {{ form.as_p }}
+                        <button class="btn btn-primary">Update</button>
+                   
+                   </form>
+                </div>
+                  {% else %}
+                You are not allowed here.
+                {% endif %}
+                <!-- Javascript -->
+                <script>
+                   var name ="{{user.id}}";
+                   document.getElementById("elder").value= name;
+                </script>
+
+
+                <div class="read-more">
+                  <a href="blog-single.html">Read More</a>
+                </div>
+              </div>
+            
+            </article><!-- End blog entry -->
+
+          </div><!-- End blog entries list -->
+
+          
+          <div class="col-lg-4">
+
+            <div class="sidebar" data-aos="fade-left">
+
+              <h3 class="sidebar-title">Search</h3>
+              <div class="sidebar-item search-form">
+               
+                <form action="{% url 'blog:search' %}" method=POST>
+                  {% csrf_token %}
+                  <input type="search" class = "form-control " name="searched"  placeholder="search post">
+                  <button type="submit"><i class="icofont-search"></i></button>
+                </form>
+              </div><!-- End sidebar search formn-->
+
+              <h3 class="sidebar-title">Recent Posts</h3>
+              <div class="sidebar-item recent-posts">
+                <div class="post-item clearfix">
+                  
+                  {% show_latest_posts 5 %}
+                  
+                </div>
+
+
+               
+
+              </div><!-- End sidebar recent posts-->
+
+              <h3 class="sidebar-title">Tags</h3>
+              <div class="sidebar-item tags">
+                <ul>
+                  <li><h2>Similar posts</h2>
+                    {% for post in similar_posts %}
+                    <p>
+                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                    </p>
+                    {% empty %}
+                    There are no similar posts yet.
+                    {% endfor %}</li>
+                  
+                </ul>
+
+              </div><!-- End sidebar tags-->
+              
+              <div class="post-item clearfix">
+                <h3 class="sidebar-title">Most Commented Posts</h3>
+            
+              {% get_most_commented_posts as most_commented_posts %}
+              <ul class="text-decoration-none">
+              {% for post in most_commented_posts %}
+              <li>
+              <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+              </li>
+              {% endfor %}
+              </ul>
+
+              </div>
+            </div><!-- End sidebar -->
+
+          </div><!-- End blog sidebar -->
+
+        </div>
+
+      </div>
+    </section><!-- End Blog Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+ 
+    {% include 'fragments/footer.html' %}
+  {% endblock%}

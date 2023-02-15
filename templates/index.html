@@ -1,0 +1,561 @@
+{% include 'fragments/base.html' %}
+{% load  static %}
+{%load blog_tags %}
+{% block content %}
+
+{% include 'fragments/nav.html' %}
+
+<br/>
+<!-- ================== Carousel section=============-->
+{% include 'blog/slider.html' %}
+<main id="main">
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about-us" class="about-us">
+      <div class="container-fluid" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>About Us</strong></h2>
+        </div>
+
+        <div class="row content">
+          
+
+          <div class="col-lg-4" data-aos="fade-right">
+            <h4> Our Mission</h4>
+            {% for mission in mission %}
+           
+
+            <div class="card" style="width: 25rem;">
+              <img src="{{mission.image_about.url}}"  alt="" height="300px"  width="400px">
+              <div class="card-body">
+                <h5 class="card-title">  {{mission.title |capfirst|markdown|truncatechars_html:35}}</h5>
+                <p> {{mission.desc|markdown|truncatechars_html:200|safe }}
+
+                </p>
+                <a href="#" class="btn btn-primary">read more</a>
+              </div>
+            </div>
+            {% endfor %}
+           
+
+
+          </div>
+         
+          
+
+          
+          <div class="col-lg-4" data-aos="fade-right">
+            <h4> Our Objective</h4>
+            {% for object in object %}
+           
+
+            <div class="card" style="width: 25rem;">
+              <img src="{{object.objImage.url}}"  alt="" height="300px"  width="400px">
+              <div class="card-body">
+                <h5 class="card-title">  {{object.title|capfirst|markdown|truncatechars_html:35}}</h5>
+                <p> {{object.desc|markdown|truncatechars_html:200|safe }}
+
+                </p>
+                <a href="#" class="btn btn-primary">read more</a>
+              </div>
+            </div>
+            {% endfor %}
+           
+
+
+          </div>
+
+          <div class="col-lg-4" data-aos="fade-right">
+            <h4>Our Goal</h4>
+            {% for go in go %}
+           
+
+            <div class="card" style="width: 25rem;">
+              <img src="{{go.goImage.url}}"  alt="" height="300px"  width="400px">
+              <div class="card-body">
+                <h5 class="card-title">  {{go.title|capfirst|markdown|truncatechars_html:35}}</h5>
+                <p> {{go.desc|markdown|truncatechars_html:200|safe }}
+
+                </p>
+                <a href="#" class="btn btn-primary">read more</a>
+              </div>
+            </div>
+            {% endfor %}
+           
+
+
+          </div>
+
+        
+        </div>
+
+      </div>
+    </section><!-- End About Us Section -->
+<!-- ========== Testimonials ===========-->
+
+{% include 'fragments/testimony.html' %}
+<!--=========== End of Testimonials============-->
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Services</strong></h2>
+          <p>Laborum repudiandae omnis voluptatum consequatur mollitia ea est voluptas ut</p>
+        </div>
+
+        <div class="row">
+
+           {% for  dest in dest %}
+        
+          <div class="col-lg-4 col-md-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200" style="margin-top:25px;">
+            <div class="icon-box iconbox-blue">
+              <div class="icon">
+                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,521.0016835830174C376.1290562159157,517.8887921683347,466.0731472004068,529.7835943286574,510.70327084640275,468.03025145048787C554.3714126377745,407.6079735673963,508.03601936045806,328.9844924480964,491.2728898941984,256.3432110539036C474.5976632858925,184.082847569629,479.9380746630129,96.60480741107993,416.23090153303,58.64404602377083C348.86323505073057,18.502131276798302,261.93793281208167,40.57373210992963,193.5410806939664,78.93577620505333C130.42746243093433,114.334589627462,98.30271207620316,179.96522072025542,76.75703585869454,249.04625023123273C51.97151888228291,328.5150500222984,13.704378332031375,421.85034740162234,66.52175969318436,486.19268352777647C119.04800174914682,550.1803526380478,217.28368757567262,524.383925680826,300,521.0016835830174"></path>
+                </svg>
+                <i class="bx bxl-dribbble"></i>
+              </div>
+              
+              <h4><a href="">{{dest.title}}</a></h4>
+              <img src="{{dest.descImage.url}}" width="270px" height="250px" alt="">
+              <p>{{dest.body|markdown|truncatechars_html:250|safe }}</p>
+              
+              {% if dest.active %}
+
+             
+              <p class="alert-info"><a href="#">Read more</a></p>
+            
+            {% endif %}
+          
+
+          </div> 
+        </div>
+        
+
+        {% endfor %}
+        
+      
+      </div>
+
+    </div>
+  </section><!-- End Services Section -->
+  <!-- ==== Carousel Section =====-->
+
+ <!-- ======= Latest Properties Section ======= -->
+ <section id="services" class="services section-bg">
+
+  <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2><strong>Properties</strong></h2>
+        <p>Laborum repudiandae omnis voluptatum consequatur mollitia ea est voluptas ut</p>
+      </div>
+
+
+    <div id="property-carousel" class="swiper">
+      <div class="swiper-wrapper">
+
+        <div class="carousel-item-b swiper-slide">
+          <div class="card-box-a card-shadow">
+            <div class="img-box-a">
+              <img src="{% static 'img/property-6.jpg' %}" alt="" class="img-a img-fluid">
+            </div>
+            <div class="card-overlay">
+              <div class="card-overlay-a-content">
+                <div class="card-header-a">
+                  <h2 class="card-title-a">
+                    <a href="property-single.html">206 Mount
+                      <br /> Olive Road Two</a>
+                  </h2>
+                </div>
+                <div class="card-body-a">
+                  <div class="price-box d-flex">
+                    <span class="price-a">rent | $ 12.000</span>
+                  </div>
+                  <a href="#" class="link-a">Click here to view
+                    <span class="bi bi-chevron-right"></span>
+                  </a>
+                </div>
+                <div class="card-footer-a">
+                  <ul class="card-info d-flex justify-content-around">
+                    <li>
+                      <h4 class="card-info-title">Area</h4>
+                      <span>340m
+                        <sup>2</sup>
+                      </span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Beds</h4>
+                      <span>2</span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Baths</h4>
+                      <span>4</span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Garages</h4>
+                      <span>1</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- End carousel item -->
+
+        <div class="carousel-item-b swiper-slide">
+          <div class="card-box-a card-shadow">
+            <div class="img-box-a">
+              <img src="{% static 'img/property-3.jpg' %}" alt="" class="img-a img-fluid">
+            </div>
+            <div class="card-overlay">
+              <div class="card-overlay-a-content">
+                <div class="card-header-a">
+                  <h2 class="card-title-a">
+                    <a href="property-single.html">157 West
+                      <br /> Central Park</a>
+                  </h2>
+                </div>
+                <div class="card-body-a">
+                  <div class="price-box d-flex">
+                    <span class="price-a">rent | $ 12.000</span>
+                  </div>
+                  <a href="property-single.html" class="link-a">Click here to view
+                    <span class="bi bi-chevron-right"></span>
+                  </a>
+                </div>
+                <div class="card-footer-a">
+                  <ul class="card-info d-flex justify-content-around">
+                    <li>
+                      <h4 class="card-info-title">Area</h4>
+                      <span>340m
+                        <sup>2</sup>
+                      </span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Beds</h4>
+                      <span>2</span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Baths</h4>
+                      <span>4</span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Garages</h4>
+                      <span>1</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- End carousel item -->
+
+        <div class="carousel-item-b swiper-slide">
+          <div class="card-box-a card-shadow">
+            <div class="img-box-a">
+              <img src="{% static 'img/property-7.jpg' %}" alt="" class="img-a img-fluid">
+            </div>
+            <div class="card-overlay">
+              <div class="card-overlay-a-content">
+                <div class="card-header-a">
+                  <h2 class="card-title-a">
+                    <a href="property-single.html">245 Azabu
+                      <br /> Nishi Park let</a>
+                  </h2>
+                </div>
+                <div class="card-body-a">
+                  <div class="price-box d-flex">
+                    <span class="price-a">rent | $ 12.000</span>
+                  </div>
+                  <a href="property-single.html" class="link-a">Click here to view
+                    <span class="bi bi-chevron-right"></span>
+                  </a>
+                </div>
+                <div class="card-footer-a">
+                  <ul class="card-info d-flex justify-content-around">
+                    <li>
+                      <h4 class="card-info-title">Area</h4>
+                      <span>340m
+                        <sup>2</sup>
+                      </span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Beds</h4>
+                      <span>2</span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Baths</h4>
+                      <span>4</span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Garages</h4>
+                      <span>1</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- End carousel item -->
+
+        <div class="carousel-item-b swiper-slide">
+          <div class="card-box-a card-shadow">
+            <div class="img-box-a">
+              <img src="{% static 'img/property-10.jpg' %}" alt="" class="img-a img-fluid">
+            </div>
+            <div class="card-overlay">
+              <div class="card-overlay-a-content">
+                <div class="card-header-a">
+                  <h2 class="card-title-a">
+                    <a href="property-single.html">204 Montal
+                      <br /> South Bela Two</a>
+                  </h2>
+                </div>
+                <div class="card-body-a">
+                  <div class="price-box d-flex">
+                    <span class="price-a">rent | $ 12.000</span>
+                  </div>
+                  <a href="property-single.html" class="link-a">Click here to view
+                    <span class="bi bi-chevron-right"></span>
+                  </a>
+                </div>
+                <div class="card-footer-a">
+                  <ul class="card-info d-flex justify-content-around">
+                    <li>
+                      <h4 class="card-info-title">Area</h4>
+                      <span>340m
+                        <sup>2</sup>
+                      </span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Beds</h4>
+                      <span>2</span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Baths</h4>
+                      <span>4</span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Garages</h4>
+                      <span>1</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- End carousel item -->
+      </div>
+    </div>
+    <div class="propery-carousel-pagination carousel-pagination"></div>
+
+  </div>
+</section><!-- End Latest Properties Section -->
+
+
+
+
+  <!--==== end of Carousel section ====-->
+   <!-- ======= Portfolio Section ======= -->
+   <section id="portfolio" class="portfolio">
+    <div class="container" data-aos="fade-up">
+
+
+      <div class="section-title">
+        <h2>Our products</strong></h2>
+        <p>Laborum repudiandae omnis voluptatum consequatur mollitia ea est voluptas ut</p>
+      </div>
+
+
+      <div class="row" data-aos="fade-up">
+        <div class="col-lg-12 d-flex justify-content-center">
+          <ul id="portfolio-flters">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-app">App</li>
+            <li data-filter=".filter-card">Card</li>
+            <li data-filter=".filter-web">Web</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row portfolio-container" data-aos="fade-up">
+        {% for app in app %}
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <img src="{{app.img.url}}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>{{app.title}}</h4>
+            <p>{{app.Desc|markdown|truncatechars_html:50|safe }}</p>
+            {% if app.active %}
+            <p class="alert-info"><a href="#">Read more</a></p>
+            {% endif %}
+
+            &nbsp;
+
+            <a href="{% static 'assets/img/portfolio/portfolio-1.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+            <a href="/portfolio-details" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+        {% endfor %}
+
+
+        {% for wep in wep %}
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <img src="{{wep.img.url}}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>{{wep.title}}</h4>
+
+            <p>{{wep.Desc|markdown|truncatechars_html:50|safe }}</p>
+            {% if wep.active %}
+            <p class="alert-info"><a href="#">Read more</a></p>
+            {% endif %}
+&nbsp;
+            <a href="{% static 'assets/img/portfolio/portfolio-2.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+            <a href="/portfolio-details" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+        {% endfor %}
+
+        
+
+        {% for card in card %}
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <img src="{{card.img.url}}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>{{card.title}}</h4>
+
+            <p>{{card.Desc|markdown|truncatechars_html:50|safe }}</p>
+            {% if card.active %}
+            <p class="alert-info"><a href="#">Read more</a></p>
+            {% endif %}
+            &nbsp;
+            <a href="{% static 'assets/img/portfolio/portfolio-4.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
+            <a href="/portfolio-details" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+        {% endfor %}
+
+        {% for web2 in web2%}
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <img src="{% static 'assets/img/portfolio/portfolio-5.jpg' %}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Web 2</h4>
+            <p>Web</p>
+            <a href="{% static 'assets/img/portfolio/portfolio-5.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
+            <a href="/portfolio-details" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+        {% endfor %}
+
+        {% for app3 in app3 %}
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <img src="{% static 'assets/img/portfolio/portfolio-6.jpg' %}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>App 3</h4>
+            <p>App</p>
+            <a href="{% static 'assets/img/portfolio/portfolio-6.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
+            <a href="/portfolio-details" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+          {% endfor %}
+
+          {% for card5 in card5%}
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <img src="{% static 'assets/img/portfolio/portfolio-7.jpg' %}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Card 1</h4>
+            <p>Card</p>
+            <a href="{% static 'assets/img/portfolio/portfolio-7.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
+            <a href="/portfolio-details" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+        {% endfor %}
+
+        {% for card3 in card3 %}
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <img src="{% static 'assets/img/portfolio/portfolio-8.jpg' %}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Card 3</h4>
+            <p>Card</p>
+            <a href="{% static 'assets/img/portfolio/portfolio-8.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
+            <a href="/portfolio-details" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+        {% endfor %}
+
+        {% for web4 in web4 %}
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <img src="{% static 'assets/img/portfolio/portfolio-9.jpg' %}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Web 3</h4>
+            <p>Web</p>
+            <a href="{% static 'assets/img/portfolio/portfolio-9.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+            <a href="/portfolio-details" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </section><!-- End Portfolio Section -->
+
+  <!-- ======= Our Clients Section ======= -->
+  <section id="clients" class="clients">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Clients</h2>
+      </div>
+
+      <div class="row no-gutters clients-wrap clearfix" data-aos="fade-up">
+
+        {% for client in client %}
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="client-logo">
+            
+      
+            {% if client.Image_client %}
+    
+            <img src="{{client.Image_client.url}}"/>
+    
+            {% endif %}
+            
+
+        </div>
+       
+
+      </div>
+      {% endfor %}
+
+
+
+
+      </div>
+
+       
+
+        
+
+        
+
+        
+
+       
+
+      
+
+    </div>
+  </section><!-- End Our Clients Section -->
+  
+
+</main><!-- End #main -->
+
+
+
+
+
+
+{%include 'fragments/footer.html'%}
+{% endblock%}

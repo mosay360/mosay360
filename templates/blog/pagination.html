@@ -1,0 +1,22 @@
+
+
+{% extends 'fragments/base.html' %}
+{% block content %}
+<div class="blog-pagination">
+    <ul class="justify-content-center">
+      <li class="disabled"><i class="icofont-rounded-left"></i></li>
+      
+      {% if page.has_previous %}
+      <a href="?page={{page.previous_page_number}}">Previous &nbsp;</a>
+      {% endif %}
+
+      <span class="current">
+          Page {{page.number}} &nbsp; of &nbsp; {{page.paginator.num_pages}}
+
+      </span>
+      {% if page.has_next %}
+      <a href="?page={{page.next_page_number}}"> &nbsp; Next <i class="icofont-rounded-right"></i> </a>
+      {% endif %}
+    </ul>
+  </div>
+  {% endblock %}

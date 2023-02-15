@@ -1,0 +1,105 @@
+ <!-- ======= Header ======= -->
+ <header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+
+    <h1 class="logo me-auto"><a href="/"><span>Mosay</span>360</a></h1>
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+    <nav id="navbar" class="navbar order-last order-lg-0">
+      <ul>
+        <li><a href="/" class="active">Home</a></li>
+
+        <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+              <ul>
+                <li><a href="#">Deep Drop Down 1</a></li>
+                <li><a href="#">Deep Drop Down 2</a></li>
+                <li><a href="#">Deep Drop Down 3</a></li>
+                <li><a href="#">Deep Drop Down 4</a></li>
+                <li><a href="#">Deep Drop Down 5</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        {% comment %}  
+        <li><a href="/service">Services</a></li>
+        {% endcomment %}
+
+
+
+
+
+        {% comment %} Dropdown for Services {% endcomment %}
+
+
+<li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="/service">Our Services</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li class="dropdown"><a href="#"><span>Service Details</span> <i class="bi bi-chevron-right"></i></a>
+              <ul>
+                <li><a href="#">Roofing Estimation</a></li>
+                <li><a href="#">Wood Installation</a></li>
+                <li><a href="#">Reroofing</a></li>
+                <li><a href="#">Free Estimation</a></li>
+                <li><a href="#">Architectural Drawing</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+
+        {% comment %} End of service dropdown {% endcomment %}
+        <li><a href="/portfolio">Products</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="{% url 'blog:blogIndex' %}">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+
+
+        
+          <li class="dropdown"><a href="#"><span>User Account</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              {% if user.is_authenticated %}
+              <li><a href="{% url 'blog:add_post' %}">Add Post</a></li>
+              <li><a href= "{% url 'profile' %}">Profile</a></li>
+              <li><a href="{% url 'logout' %}">Logout</a></li>
+
+              {% else %}
+              <li><a href="{% url 'register' %}">Register</a></li>
+              <li><a href="{% url 'login' %}">Login</a></li>
+               {% endif %}
+              
+            </ul>
+          </li>
+  
+        
+
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+<!--dropdown begin-->
+      
+     
+<!--dropdown  end-->
+
+    </nav><!-- .navbar -->
+
+    <div class="header-social-links d-flex">
+      
+
+      {% if user.is_authenticated %}
+      &nbsp; <i style = "color:cadetblue;">Welcome, {{user.username| capfirst}}</i>
+     {% endif %}
+      <a href="#" class="facebook"><i class="bu bi-facebook"></i></a>
+     
+      
+    </div>
+
+  </div>
+</header><!-- End Header -->

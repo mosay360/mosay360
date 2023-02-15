@@ -1,0 +1,23 @@
+
+{% load blog_tags %}
+
+<ul style="text-decoration: none;">
+{% for post in latest_posts %}
+
+
+
+<div class="sidebar-item recent-posts">
+    <div class="post-item clearfix">
+<p style="text-align:center; margin-right: 50px;">
+    <a href="{{ post.get_absolute_url}}">
+        <img src="{{ post.blockImage.url }}" alt=""> {{post.title}}
+    </a>
+    
+   
+        {{post.created }}
+    </p>
+</div>
+
+
+{% endfor %}
+</ul>
